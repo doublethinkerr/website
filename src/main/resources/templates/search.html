@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="main">
+        <div id="content">
+            <h2 class="text-center">список новостей</h2>
+
+            <form action="" method="post">
+                <input type="text" name="search">
+
+                <button type="submit" class="btn btn-info mt-1" id="but1">Найти</button>
+            </form>
+
+            <div th:each="el : ${posts}" class="post">
+                <span th:switch="${el.filename}">
+                    <p th:case="'null'"></p>
+                    <p th:case="*"><img th:src="@{/img/{filename}(filename = ${el.filename})}" class="image"></p>
+                </span>
+
+                <div class="post-info">
+                    <a th:href="'/blog/' + ${el.id}">
+                        <h3 class="post-title text-center" th:text="${el.title}"/>
+                    </a>
+                    <a th:href="'/blog/' + ${el.id}"><p class="anons" th:text="${el.anons}"/></a>
+                    <img th:src="@{../images/eye2.png}" class="imageEye"/>
+                    <div th:text="${el.views}" class="postViews"/>
+                    <div th:text="${el.date}" class="postDate"/>
+                </div>
+            </div>
+        </div>
+
+        <div th:insert="blocks/sidebar :: sidebar"></div>
+
+    </div>
+
+    <footer th:insert="blocks/footer :: footer "></footer>
+
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+
+</html>

@@ -14,29 +14,27 @@
         <div id="content">
 
             <div th:each="el : ${post}">
-
-                <h2 th:text="${el.title}" class="mb-5 text-center"/>
+                <span th:switch="${el.filename}">
+                    <p th:case="'null'"></p>
+                    <p th:case="*">
+                        <a data-fancybox="gallery" th:href="@{/img/{filename}(filename = ${el.filename})}">
+                            <img th:src="@{/img/{filename}(filename = ${el.filename})}" class="detailsImage">
+                        </a>
+                    </p>
+                </span>
+                <h2 th:text="${el.title}" class="postTitle"/>
                 <a href="/blog" class="btn btn-info">Назад</a>
                 <div id="fullText">
-                    <span th:switch="${el.filename}">
-                        <p th:case="'null'"></p>
-                        <p th:case="*">
-                            <a data-fancybox="gallery" th:href="@{/img/{filename}(filename = ${el.filename})}">
-                                <img th:src="@{/img/{filename}(filename = ${el.filename})}" class="detailsImage">
-                            </a>
-                        </p>
-                    </span>
-
-                    <p th:text="${el.full_text}" class="fullText2"></p>
-
-                    <p th:text="'Просмотров: ' + ${el.views}" class="views-post"/>
-                    <p th:text="${el.date}" class="date-post"/>
+                    <textarea name="full_text" th:text="${el.full_text}" cols="50" style="width: 599px;">
+                    </textarea><br>
                 </div>
+
+                <p th:text="'Просмотров: ' + ${el.views}" class="views-post"/>
+                <p th:text="${el.date}" class="date-post"/>
 
             </div>
 
         </div>
-
         <div th:insert="blocks/sidebar :: sidebar"></div>
 
     </div>
@@ -44,6 +42,11 @@
     <footer th:insert="blocks/footer :: footer "></footer>
 
 </div>
+<style>
+    .nicEdit-panelContain{
+        display: none;
+    }
+</style>
 <div th:insert="blocks/footerLink :: footerLink "></div>
 </body>
 </html>

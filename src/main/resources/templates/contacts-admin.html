@@ -14,7 +14,7 @@
             <a href="/blog/admin" class="btn btn-info">Назад</a>
             <form method="post">
 
-                <input type="text" name="textContacts" th:value="${contactList[10].name}"><br>
+                <textarea name="textContacts" th:value="${contactList[10].name}" style="width: 599px; height: 300px;"></textarea><br>
 
                 <table class="table table-bordered table-hover">
                     <thead>
@@ -56,6 +56,11 @@
     <footer th:insert="blocks/footer :: footer "></footer>
 
 </div>
+<style>
+    .nicEdit-main{
+        background: white;
+    }
+</style>
 <div th:insert="blocks/footerLink :: footerLink "></div>
 </body>
 </html>

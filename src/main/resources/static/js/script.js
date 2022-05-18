@@ -7,20 +7,6 @@ $('.single-item').slick({
   autoplaySpeed: 1000,
 });
 
-$(document).ready(function(){
-  $( '.lightzoom' ).lightzoom( {
-            boxClass: "my-box-class",
-       speed:                 400,   // скорость появления
-       imgPadding:            10,    // значение отступа у изображения
-       overlayOpacity:        '0.5', // прозрачность фона (от 0 до 1)
-       viewTitle:             false, // true, если надо показывать подпись к изобажению
-       isOverlayClickClosing: true, // true, если надо закрывать окно при клике по затемненной области
-       isWindowClickClosing:  true, // true, если надо закрывать окно при клике по любой области
-       isEscClosing:          true, // true, если надо закрывать окно при нажатии на кнопку Esc
-          } );
-});
-
-
  function calendar(id, year, month) {
     var Dlast = new Date(year, month + 1, 0).getDate(),
       D = new Date(year, month, Dlast),

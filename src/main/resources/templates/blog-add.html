@@ -16,7 +16,8 @@
             <form action="" method="post" enctype="multipart/form-data">
                 <input type="text" name="title" placeholder="Введите название статьи" class="form-control"><br>
                 <input type="text" name="anons" placeholder="Введите анонс статьи" class="form-control"><br>
-                <textarea name="full_text" placeholder="Введите полный текст статьи" class="form-control"></textarea><br>
+                <textarea name="full_text" placeholder="Введите полный текст статьи" id="editor" class="form-control" style="width: 300px; height: 100px; background: white;">
+                </textarea><br>
                 <p>Загрузите изображение:</p> <input type="file" name="file"> <br>
                 <p>Поместить на главную?:</p>
                 <select id="types" name="types">
@@ -27,7 +28,6 @@
             </form>
         </div>
     </div>
-
 
 
     <footer th:insert="blocks/footer :: footer "></footer>

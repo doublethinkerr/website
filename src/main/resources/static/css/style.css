@@ -79,18 +79,20 @@ body {
 	float: left;
 	width: 624px;
 	margin-left: 6px;
-	padding: 35px 19px 0 20px;
-    height: 1360px;
+    padding: 25px 10px 0 10px;
+    min-height: 1050px;
     position: relative;
 	}
+
 #content h2 {
     text-align: center;
     text-transform: uppercase;
     font-family: '', sans-serif;
-	font-size: 27px; text-shadow: 1px 1px 0 #fff;
-	padding-bottom: 20px; margin-bottom: 25px; padding-left: 30px;
+	font-size: 25px; text-shadow: 1px 1px 0 #fff;
+	padding-bottom: 20px;     margin-bottom: 10px; padding-left: 30px;
 	border-bottom: 1px solid #fff;
 	background: url("../images/gray-border.png") bottom left repeat-x;
+    word-break: break-all;
 	}
 
 .image{
@@ -117,15 +119,27 @@ body {
     float: right;
     border-radius: 11px;
     border: 2px solid #ddd;
-    width: 270px;
+    width: 250px;
     height: 190px;
 
+}
+
+.postTitle{
+    min-height: 220px;
+    padding-top: 20px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis; /* Добавляем многоточие */
 }
 
 #fullText {
     position: relative;
     overflow: auto;
-    height: 1050px;
+    min-height: 400px;
+    max-height: 700px;
+    width: 600px;
     color: black;
     float: left;
     text-align: justify;
@@ -133,9 +147,10 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 800;
     line-height: 30px;
-    padding-top: 30px;
+    box-shadow: 2px 2px 5px 1px;
+    margin: 15px 0 65px 0;
+}
 
-    }
 #fullText::-webkit-scrollbar {
   width: 10px;
 }
@@ -165,8 +180,8 @@ body {
 .views-post{
     float: left;
     position: absolute;
-    left: 0;
-    bottom: 0;
+    left: 30px;
+    bottom: 10px;
     margin-top: 15px;
     border-top: 1px solid #fff;
     background: url("../images/gray-border.png") top left repeat-x;
@@ -174,8 +189,8 @@ body {
 .date-post{
     float: right;
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 30px;
+    bottom: 10px;
     margin-top: 15px;
     border-top: 1px solid #fff;
     background: url("../images/gray-border.png") top left repeat-x;
@@ -309,7 +324,7 @@ body {
     color: white;
 	float: left;
 	width: 331px;
-    min-height: 1360px;
+    min-height: 1090px;
 	border-left: 1px solid black;
 	border-right: 1px solid black;
 	padding: 0px 20px 100px 20px;
@@ -538,3 +553,4 @@ h3.subscribe {
     overflow: auto;
     height: 1140px;
 }
+

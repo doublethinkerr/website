@@ -9,6 +9,7 @@ import com.ffssr.website.models.repo.*;
 import com.ffssr.website.services.CompetitionService;
 import com.ffssr.website.services.PostService;
 import com.ibm.icu.text.Transliterator;
+import org.h2.engine.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -44,6 +45,8 @@ public class NewsController {
     static Unit mainPost = null;
 
     static public int countOfPosts = 5;
+
+    static public List<Post> globalSerach = new ArrayList<>();
 
     @Value("${uploadIMG.path}")
     private String uploadPathIMG;
@@ -89,6 +92,22 @@ public class NewsController {
         model.addAttribute("calendarDocs", DocumentsController.calendarDocs);
 
         return "blog-main";
+    }
+
+    @PostMapping("/blog")
+    public String newsMainSearch(@RequestParam String search, Model model){
+        globalSerach = postRepository.findAllByTitleOrAnons(search, search);
+
+
+        return "redirect:/search";
+    }
+
+    @GetMapping("/search")
+    public String search(Model model){
+
+        model.addAttribute("posts", globalSerach);
+        model.addAttribute("title", "Поиск");
+        return "search";
     }
 
     @GetMapping("/blog/add")

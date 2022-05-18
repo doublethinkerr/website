@@ -15,7 +15,7 @@
 
             <h2 class="">Контакты</h2>
 
-            <p class="adress" th:text="${contactList[10].name}"></p>
+            <textarea class="adress" th:text="${contactList[10].name}" style="width: 599px; height: 300px;"></textarea>
 
             <table class="table table-bordered table-hover">
                 <thead>
@@ -54,6 +54,14 @@
             <footer th:insert="blocks/footer :: footer "></footer>
 
 </div>
+<style>
+    .nicEdit-panelContain{
+        display: none;
+    }
+    .nicEdit-main{
+        padding-bottom: 20px;
+    }
+</style>
 <div th:insert="blocks/footerLink :: footerLink "></div>
 </body>
 </html>
