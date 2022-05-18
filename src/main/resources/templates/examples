@@ -1,0 +1,88 @@
+                                            <p th:text="${doc}" class="docName"></p>
+                                            <img th:src="@{../images/word2.png}" class="imageDoc">
+                                            <a th:href="@{/doc/{filename}(filename = ${doc})}" target="_blank" th:download="${el.name}">
+
+                                            </a>
+
+
+                </div>
+                    <form th:action="'/blog/documents/' + ${el.id} + '/remove'" method="post">
+                    <button class="btn btn-danger" type="submit"> Удалить</button>
+                </form>
+
+                <script type="text/javascript" th:src="@{/js/script.js}" ></script>
+
+                 <div id="sidebar">
+                            <h4 class="mb-2">Прямая трансляция</h4>
+                            <div id="videoSpan">
+                                <span th:switch="${videoLink}">
+                                    <p th:case="'null'">Прямых трансляций сейчас нет!</p>
+                                    <p th:case="*"><iframe width="250" height="200" th:src="${videoLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                        </p>
+                                </span>
+
+                            </div>
+
+                            <h4 class="mt-4">Документы</h4>
+                            <ol class="square">
+                                <li th:each="el : ${docs}" >
+                                        <a th:href="@{/doc/{filename}(filename = ${el.name})}" target="_blank" th:download="${el.name}">
+                                            <p th:text="${el.name}"></p>
+                                        </a>
+                                </li>
+                            </ol>
+                        </div>
+
+
+                        .details {
+                        	display: inline-block;
+                        	padding: 4px 10px; margin-left: 5px;
+                        	background: #868686;
+                        	font-family: Verdana, san-serif; font-size: 10px; line-height: 1em;
+                        	color: #fff; text-decoration: none;
+                        	border-bottom: 1px solid #a1a1a1;
+                        	}
+
+font-family: 'Playfair Display', serif;
+                        	;font-family: 'Mulish', sans-serif;
+
+                        	голубой фон
+                        	    background: rgb(243,253,255);
+                                background: linear-gradient(0deg, rgba(243,253,255,1) 32%, rgba(227,244,255,1) 49%, rgba(242,253,255,1) 68%);
+
+
+                                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                                    <script type="text/javascript" th:src="@{/js/script.js}" ></script>
+
+
+
+
+                                    <div class="lastPosts">
+                                                            <div th:each="el : ${lastNews}" class="mainNews">
+                                                                    <span th:switch="${el.filename}">
+                                                                        <p th:case="'null'"></p>
+                                                                        <p th:case="*"><img th:src="@{/img/{filename}(filename = ${el.filename})}" class="mainNewsImage"></p>
+                                                                    </span>
+                                                                <div class="">
+                                                                    <a th:href="'/blog/' + ${el.id}" class="link">
+                                                                        <h3> <span class="mainNewsTitle" th:text="${el.title}"> </span></h3>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+
+                                                            <div th:each="el : ${lastCompetition}" class="mainNews">
+                                                                    <span th:switch="${el.filename}">
+                                                                        <p th:case="'null'"></p>
+                                                                        <p th:case="*"><img th:src="@{/img/{filename}(filename = ${el.filename})}" class="mainNewsImage"></p>
+                                                                    </span>
+                                                                <div class="">
+                                                                    <a th:href="'/competition/' + ${el.id}" class="link">
+                                                                        <h3> <span class="mainNewsTitle" th:text="${el.title}"> </span></h3>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+bjhjpi0jijjpoj
+

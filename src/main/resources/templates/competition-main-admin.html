@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="main">
+        <div id="content">
+            <a href="/competition/add" class="btn btn-primary my-3"> Добавить соревнование</a>
+            <a href="/contactsAdmin" class="btn btn-primary my-3"> Изменить контакты</a>
+            <a href="/login?logout" class="btn btn-primary my-3"> Выйти из аккаунта</a>
+            <a href="/blog/admin" class="btn btn-primary my-3"> Администрирование новостей</a>
+
+            <h2>Список новостей</h2>
+
+            <div th:each="el : ${posts}" class="post">
+                <span th:switch="${el.filename}">
+                    <p th:case="'null'"></p>
+                    <p th:case="*"><img th:src="@{/img/{filename}(filename = ${el.filename})}" class="image"></p>
+                </span>
+
+                <div class="post-info">
+                    <a th:href="'/competition/' + ${el.id}">
+                        <h4 class="post-title" th:text="${el.title}"/>
+                    </a><br>
+                    <p class="mx-2" th:text="${el.anons}"/>
+                    <a th:href="'/competition/' + ${el.id} + '/edit'" class="btn btn-primary mt-2"> Редактировать</a>
+                    <form th:action="'/competition/' + ${el.id} + '/remove'" method="post">
+                        <button class="btn btn-danger" type="submit"> Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div th:insert="blocks/sidebar-admin :: sidebar-admin"></div>
+
+    </div>
+
+    <footer th:insert="blocks/footer :: footer "></footer>
+
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>

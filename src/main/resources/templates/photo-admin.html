@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+    <link href="../static/css/photo.css" th:href="@{/css/photo.css}" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div id="wrapper">
+    <header th:insert="blocks/header :: header"></header>
+    <div id="main">
+        <div id="content">
+            <h2>фото</h2>
+            <a href="/photo/add" class="btn btn-primary my-3"> Создать фотоальбом</a>
+            <div class="container">
+
+                <div th:each="el : ${photoAlbumList}" class="photoAlbum">
+                    <div class="">
+                        <a th:href="'/photo/' + ${el.id}">
+                            <img th:src="@{/img/{filename}(filename = ${el.images[0]})}" class="mainPhoto">
+                            <h3 class="photoTitle text-center" th:text="${el.name}"/>
+                        </a>
+                    </div>
+                    <form th:action="'/photo/' + ${el.id} + '/remove'" method="post">
+                        <a th:href="'/photo/' + ${el.id} + '/edit'" class="btn btn-primary"> Редактировать</a>
+                        <button class="btn btn-danger" type="submit"> Удалить</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer th:insert="blocks/footer :: footer "></footer>
+
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>
+
+

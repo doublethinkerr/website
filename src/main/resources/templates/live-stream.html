@@ -1,0 +1,41 @@
+</body>
+</html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="main">
+        <div id="content">
+            <h2>Прямая трансляция</h2>
+
+            <div class="container mh-100">
+                <div id="videoSpan" class="">
+                <span th:switch="${videoLink}" >
+                    <p th:case="'null'" class="text-center">Прямых трансляций сейчас нет!</p>
+                    <p th:case="*"><p th:text="${videoDescription}" class="videoDescription"></p>
+                        <iframe width="570" height="400" th:src="${videoLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </p>
+                </span>
+                </div>
+            </div>
+
+        </div>
+
+        <div th:insert="blocks/sidebar :: sidebar"></div>
+
+    </div>
+
+    <footer th:insert="blocks/footer :: footer "></footer>
+
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>

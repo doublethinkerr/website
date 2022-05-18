@@ -1,0 +1,53 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+
+<body>
+<div id="wrapper">
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="main">
+        <div id="content">
+                <form name="f" th:action="@{/perform-login}" method="post">
+                    <fieldset class="form-group">
+                        <legend class="mt-3 mb-3">Войдите</legend>
+                        <div th:if="${param.error}" class="alert alert-error">
+                            Неправильные имя и пароль.
+                        </div>
+                        <div th:if="${param.logout}" class="alert alert-success">
+                            Вы вышли из учетной записи.
+                        </div>
+                        <label for="username">Имя</label>
+                        <input type="text" class="form-control" id="username" name="username"/>
+                        <label for="password">Пароль</label>
+                        <input type="password" class="form-control" id="password" name="password"/>
+                        <div class="form-actions mt-4">
+                            <button type="submit" class="btn btn-warning mt-3">Войти</button>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+        <div id="sidebar">
+            <h3>Документы</h3>
+
+            <ul id="twitter_update_list">
+                <li><span> Документ 1<a style="font-size: 85%;" href="http://twitter.com/themelab/statuses/14229492866"></a></li><li></li>
+                <li><span> Документ 2<a style="font-size: 85%;" href="http://twitter.com/themelab/statuses/14229492866"></a></li><li></li>
+                <li><span> Документ 3<a style="font-size: 85%;" href="http://twitter.com/themelab/statuses/14229492866"></a></li><li></li>
+                <li><span> Документ 4<a style="font-size: 85%;" href="http://twitter.com/themelab/statuses/14229492866"></a></li><li></li>
+
+            </ul>
+        </div>
+    </div>
+
+    <footer th:insert="blocks/footer :: footer "></footer>
+
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>

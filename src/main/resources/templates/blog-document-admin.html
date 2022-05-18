@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+<body>
+<div id="wrapper">
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="main">
+        <div id="content">
+            <h2>Документы</h2>
+            <a href="/blog/admin" class="btn btn-info">Назад</a><br>
+            <a href="/blog/addDocument" class="btn btn-primary my-3"> Добавить документ</a>
+            <div th:each="el : ${allDocs}" class="post">
+                <div class="">
+                    <img th:src="@{../images/word2.png}" class="imageEye">
+                    <a th:href="@{/doc/{filename}(filename = ${el.name})}" target="_blank" th:download="${el.name}">
+                        <p th:text="${el.originalName}" class="text-dark"></p>
+                    </a>
+                    <form th:action="'/documentAdmin/' + ${el.id} + '/remove'" method="post">
+                        <button class="btn btn-danger" type="submit"> Удалить</button>
+                    </form>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <footer th:insert="blocks/footer :: footer "></footer>
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>

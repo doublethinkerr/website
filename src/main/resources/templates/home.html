@@ -1,0 +1,75 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <header th:insert="blocks/headLink :: headLink"></header>
+        <link href="../static/css/main-page.css" th:href="@{/css/main-page.css}" rel="stylesheet" type="text/css" />
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+
+        <header th:insert="blocks/header :: header"></header>
+
+            <div id="main">
+                <div id="content">
+                    <div th:each="el : ${mainPost}" class="mainPost">
+                            <span th:switch="${el.filename}">
+                                <p th:case="'null'"></p>
+                                <p th:case="*"><img th:src="@{/img/{filename}(filename = ${el.filename})}" class="mainImage"></p>
+                            </span>
+
+                            <a th:href="'/blog/' + ${el.id}" class="link">
+                                <h3> <span class="mainPostTitle" th:text="${el.title}"> </span></h3>
+                            </a>
+                        <div class="mainAnons">
+                            <a th:href="'/blog/' + ${el.id}"><p class="mainAnons" th:text="${el.anons}"/></a>
+                            <img th:src="@{../images/eye2.png}" class="imageEye"/>
+                            <div th:text="${el.views}" class="postViewsMain"/>
+                            <div th:text="${el.date}" class="postDateMain"/>
+                        </div>
+                    </div>
+
+                    <div class="lastPosts">
+                        <div th:each="el : ${lastNews}" class="mainPost">
+                                <span th:switch="${el.filename}">
+                                    <p th:case="'null'"></p>
+                                    <p th:case="*"><img th:src="@{/img/{filename}(filename = ${el.filename})}" class="mainImage"></p>
+                                </span>
+                            <a th:href="'/blog/' + ${el.id}" class="link">
+                                <h3> <span class="mainPostTitle" th:text="${el.title}"> </span></h3>
+                            </a>
+                            <div class="mainAnons">
+                                <a th:href="'/blog/' + ${el.id}"><p class="mainAnons" th:text="${el.anons}"/></a>
+                                <img th:src="@{../images/eye2.png}" class="imageEye"/>
+                                <div th:text="${el.views}" class="postViewsMain"/>
+                                <div th:text="${el.date}" class="postDateMain"/>
+                            </div>
+                        </div>
+
+                        <div th:each="el : ${lastCompetition}" class="mainPost">
+                                <span th:switch="${el.filename}">
+                                    <p th:case="'null'"></p>
+                                    <p th:case="*"><img th:src="@{/img/{filename}(filename = ${el.filename})}" class="mainImage"></p>
+                                </span>
+                            <a th:href="'/blog/' + ${el.id}" class="link">
+                                <h3> <span class="mainPostTitle" th:text="${el.title}"> </span></h3>
+                            </a>
+                            <div class="mainAnons">
+                                <a th:href="'/blog/' + ${el.id}"><p class="mainAnons" th:text="${el.anons}"/></a>
+                                <img th:src="@{../images/eye2.png}" class="imageEye"/>
+                                <div th:text="${el.views}" class="postViewsMain"/>
+                                <div th:text="${el.date}" class="postDateMain"/>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div th:insert="blocks/sidebar :: sidebar"></div>
+            </div>
+        <footer th:insert="blocks/footer :: footer "></footer>
+        </div>
+        <div th:insert="blocks/footerLink :: footerLink "></div>
+    </body>
+</html>

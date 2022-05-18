@@ -1,0 +1,106 @@
+.mainPost{
+    content-align: center;
+    text-align: center;
+    position: relative;
+    margin-top: 30px;
+    border-bottom: 1px solid #fff;
+    background: url("../images/gray-border.png") bottom left repeat-x;
+}
+
+.mainPost a:hover{
+    text-decoration: underline;
+}
+
+.mainAnons{
+    text-align: justify;
+    padding: 0 10px 0 10px;
+    font-size: 19px;
+    font-weight: bold;
+    color: black;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden; /* Обрезаем все, что не помещается в область */
+    text-overflow: ellipsis; /* Добавляем многоточие */
+}
+.imageEye{
+    position: relative;
+    float: left;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+.postViewsMain{
+    font-size: 14px;
+    float: left;
+}
+
+.postDateMain{
+    font-size: 14px;
+    float: right;
+}
+
+
+.mainPostTitle {
+    position: absolute;
+    top: 240px;
+    left: 20px;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 900;
+    font-size: 24px;
+    max-width: 500px;
+    text-align: left;
+    color: black;
+    background: rgb(255,255,255);
+    background: rgba(255,255,255, 0.8);
+    padding: 7px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.mainImage{
+    width: 540px;
+    height: 290px;
+    border-radius: 3%;
+    box-shadow: 2px 2px 8px 4px #4d5b85;
+    }
+
+.mainNews{
+    position: relative;
+    width: 250px;
+    height: 320px;
+    display: inline-block;
+    border-radius: 10% 10% 0 0;
+    margin: 30px 20px 0 20px;
+}
+.mainNewsImage{
+    width: 250px;
+    height: 320px;
+    border: 0.5px solid black;
+    border-radius: 10% 10% 0 0;
+}
+.mainNewsTitle{
+    position: absolute;
+    bottom: 2px;
+    left: 0px;
+    padding: 3px 10px 5px 10px;
+    border: 0.5px solid black;
+    font-size: 26px;
+    background		: rgb(0, 0, 0);
+    background		: rgba(0, 0, 0, 0.5);
+    width: 249px;
+    min-height: 60px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+
+}
+.lastPosts{
+    display: inline-block;
+    margin-left: 25px;
+}

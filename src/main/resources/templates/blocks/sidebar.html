@@ -1,0 +1,51 @@
+<div th:fragment="sidebar">
+    <div id="sidebar">
+        <a href="/liveStream"><h4 class="mb-2 text-center">Прямые трансляции</h4></a>
+        <div id="videoSpan" class="">
+                <span th:switch="${videoLink}" >
+                    <p th:case="'null'" class="text-center">Прямых трансляций сейчас нет!</p>
+                    <p th:case="*"><iframe width="250" height="200" th:src="${videoLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </p>
+                </span>
+        </div>
+
+        <a href="/documents"><h4 class="mt-4 text-center">Документы</h4></a>
+        <ol class="square text-align">
+            <li th:each="el : ${docs}">
+                <a th:href="@{/doc/{filename}(filename = ${el.name})}" target="_blank" th:download="${el.name}">
+                    <p class="clip" th:text="${el.originalName}"></p>
+                </a>
+            </li>
+        </ol>
+
+        <h4 class="mt-4 text-center">График соревнований</h4>
+        <ol class="square text-align">
+            <li th:each="el : ${calendarDocs}">
+                <a th:href="@{/doc/{filename}(filename = ${el.name})}" target="_blank" th:download="${el.name}">
+                    <p class="clip" th:text="${el.originalName}"></p>
+                </a>
+            </li>
+        </ol>
+
+        <a href="/date" class="cal"><h4 class="mt-4 text-center">Расписание</h4>
+        <div class="look-calendar">
+            <table id="calendar">
+                <thead>
+                <tr>
+                    <td><b class="click">‹</b>
+                    <td colspan="5">
+                    <td><b class="click">›</b>
+                <tr class="dn"><td>Пн<td>Вт<td>Ср<td>Чт<td>Пт<td>Сб<td>Вс
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        </a>
+        
+        <a href="#!" class="ripple">
+            <div  class="mt-4" >
+                <img th:src="@{../images/vladimir-gerb.png}" class="russ rounded-3">
+            </div>
+        </a>
+    </div>
+</div>

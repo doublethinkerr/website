@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="main">
+        <div id="content" class="mb-3">
+            <h1 class="mb-3">Редактирование соревнований</h1>
+            <div th:each="el : ${post}">
+                <form method="post" enctype="multipart/form-data">
+                    <input type="text" th:value="${el.title}" name="title" placeholder="Введите название статьи" class="form-control"><br>
+                    <input type="text" th:value="${el.anons}" name="anons" placeholder="Введите анонс статьи" class="form-control"><br>
+                    <textarea name="full_text" th:text="${el.full_text}" placeholder="Введите полный текст статьи" class="form-control"/><br>
+                    <p>Поместить на главную?:</p>
+                    <select id="types" name="types">
+                        <option value="0">0.Нет</option>
+                        <option value="1">1.Да</option>
+                    </select><br>
+                    <p>Прикрепитье документы:</p> <input type="file" name="files" multiple> <br>
+                    <button type="submit" class="btn btn-primary">Обновить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <footer th:insert="blocks/footer :: footer "></footer>
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>

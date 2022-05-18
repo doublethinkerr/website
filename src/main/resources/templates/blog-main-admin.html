@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="main">
+        <div id="content">
+            <a href="/blog/add" class="btn btn-primary my-3"> Добавить новость</a>
+            <a href="/contactsAdmin" class="btn btn-primary my-3"> Изменить контакты</a>
+            <a href="/login?logout" class="btn btn-primary my-3"> Выйти из аккаунта</a>
+            <a href="/competition/admin" class="btn btn-primary my-3"> Администрирование соревнований</a>
+
+
+            <h2>Список новостей</h2>
+
+            <div th:each="el : ${posts.page}" class="post">
+                <span th:switch="${el.filename}">
+                    <p th:case="'null'"></p>
+                    <p th:case="*"><img th:src="@{/img/{filename}(filename = ${el.filename})}" class="image"></p>
+                </span>
+
+                <div class="post-info">
+                    <a th:href="'/blog/' + ${el.id}">
+                        <h4 class="post-title" th:text="${el.title}"/>
+                    </a><br>
+                    <p class="anons" th:text="${el.anons}" />
+                    <form th:action="'/blog/' + ${el.id} + '/remove'" method="post">
+                        <a th:href="'/blog/' + ${el.id} + '/edit'" class="btn btn-primary"> Редактировать</a>
+                        <button class="btn btn-danger" type="submit"> Удалить</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="pagable">
+                <nav aria-label="Page navigation" class="paging">
+                    <ul class="pagination" th:if="${posts.page.totalPages > 1}">
+                        <li class="page-item" th:classappend="${!posts.paging.isPrevEnabled()? 'disabled' : ''}">
+                            <a class="page-link" th:href="@{'/blog/admin/?pageNumber=' + ${posts.paging.pageNumber - 1}}"
+                               tabindex="-1">Предыдущая страница</a>
+                        </li>
+                        <th:block th:each="item : ${posts.paging.getItems()}">
+                            <li class="page-item" th:classappend="${item.index == posts.paging.pageNumber? 'active' : ''}"
+                                th:if="${item.pageItemType.name() == 'PAGE'}">
+                                <a class="page-link" th:href="@{'/blog/admin/?pageNumber=' + ${item.index}}"
+                                   th:text="${item.index}"></a>
+                            </li>
+                            <li class="page-item disabled" th:if="${item.pageItemType.name() == 'DOTS'}">
+                                <a class="page-link" href="#">...</a>
+                            </li>
+                        </th:block>
+                        <li class="page-item" th:classappend="${!posts.paging.isNextEnabled()? 'disabled' : ''}">
+                            <a class="page-link" th:href="@{'/blog/admin/?pageNumber=' + ${posts.paging.pageNumber + 1}}">Следующая страница</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+        <div th:insert="blocks/sidebar-admin :: sidebar-admin"></div>
+
+    </div>
+
+    <footer th:insert="blocks/footer :: footer "></footer>
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>

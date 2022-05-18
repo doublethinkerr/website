@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <header th:insert="blocks/header :: header"></header>
+    <div id="main">
+        <div id="content">
+            <h2>Инфа про нас</h2>
+                <div class="container aboutUs" id="fullText">
+                    <p th:text="${mainDescription}" class="fullText2"></p>
+                </div>
+        </div>
+        <div th:insert="blocks/sidebar :: sidebar"></div>
+    </div>
+
+    <footer th:insert="blocks/footer :: footer "></footer>
+
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>
+
+

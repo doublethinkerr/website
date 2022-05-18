@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="main">
+        <div id="content">
+
+            <div th:each="el : ${post}">
+
+                <h2 th:text="${el.title}" class="mb-5 text-center"/>
+                <a href="/competition" class="btn btn-info">Назад</a>
+                <div id="fullText">
+                    <span th:switch="${el.filename}">
+                        <p th:case="'null'"></p>
+                        <p th:case="*">
+                            <a data-fancybox="gallery" th:href="@{/img/{filename}(filename = ${el.filename})}">
+                                <img th:src="@{/img/{filename}(filename = ${el.filename})}" class="detailsImage">
+                            </a>
+                        </p>
+                    </span>
+
+                    <p th:text="${el.full_text}" class="fullText2"></p>
+                    <div th:each="doc : ${documents}" class="postDoc">
+                        <div class="">
+                            <img th:src="@{../images/word2.png}" class="imageDoc">
+                            <a th:href="@{/doc/{filename}(filename = ${doc})}" target="_blank" th:download="${doc}">
+                                <p th:text="${doc}" class="docName"></p>
+                            </a>
+                        </div>
+                    </div>
+                    <p th:text="'Просмотров: ' + ${el.views}" class="views-post"/>
+                    <p th:text="${el.date}" class="date-post"/>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div th:insert="blocks/sidebar :: sidebar"></div>
+
+    </div>
+    <footer th:insert="blocks/footer :: footer "></footer>
+
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>

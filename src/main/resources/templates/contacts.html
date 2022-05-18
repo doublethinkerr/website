@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+
+<body>
+
+<div id="wrapper">
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="main">
+        <div id="content">
+
+
+            <h2 class="">Контакты</h2>
+
+            <p class="adress" th:text="${contactList[10].name}"></p>
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                    <th scope="col">Телефоны:</th>
+                    <th scope="col">Эл. почты:</th>
+                    <th scope="col">Соц. Сети:</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${contactList[0].name}"></td>
+                    <td th:text="${contactList[3].name}"></td>
+                    <td th:text="${contactList[6].name}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${contactList[1].name}"></td>
+                    <td th:text="${contactList[4].name}"></td>
+                    <td th:text="${contactList[7].name}"></td>
+                </tr>
+                <tr>
+                    <td th:text="${contactList[2].name}"></td>
+                    <td th:text="${contactList[5].name}"></td>
+                    <td th:text="${contactList[8].name}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+
+            <h2 class="mt-4 mb-2">Наш адресс:</h2>
+            <p class="adress" th:text="${contactList[9].name}"></p>
+            <script type="text/javascript" charset="utf-8" async th:src="${yandexMapsApi}"></script>
+        </div>
+            <div th:insert="blocks/sidebar :: sidebar"></div>
+    </div>
+            <footer th:insert="blocks/footer :: footer "></footer>
+
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>
+
+

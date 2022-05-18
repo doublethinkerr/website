@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+<body>
+<div id="wrapper">
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="main">
+        <div id="content">
+
+            <h2 class="">Контакты</h2>
+            <a href="/blog/admin" class="btn btn-info">Назад</a>
+            <form method="post">
+
+                <input type="text" name="textContacts" th:value="${contactList[10].name}"><br>
+
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">Номера телефонов:</th>
+                        <th scope="col">Эл. почта:</th>
+                        <th scope="col">Соц. Сети:</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td><input type="text" name="number1" th:value="${contactList[0].name}"> </td>
+                        <td><input type="text" name="email1" th:value="${contactList[2].name}"> </td>
+                        <td><input type="text" name="social1" th:value="${contactList[4].name}"> </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="number2" th:value="${contactList[1].name}"> </td>
+                        <td><input type="text" name="email2" th:value="${contactList[3].name}"> </td>
+                        <td><input type="text" name="social2" th:value="${contactList[5].name}"> </td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="number3" th:value="${contactList[1].name}"> </td>
+                        <td><input type="text" name="email3" th:value="${contactList[3].name}"> </td>
+                        <td><input type="text" name="social3" th:value="${contactList[5].name}"> </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <input type="text" name="adress1" th:value="${contactList[9].name}"><br>
+                <input type="text" name="adressAPI" th:value="${yandexMapsApi}"><br>
+                <button type="submit" class="btn btn-primary mt-3">Изменить контакты</button>
+            </form>
+
+            <h2 class="my-2">Наш адресс:</h2>
+
+            <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A73b945ea11c6e936f06c00097787ab2a843dfbc2539509d6c42f5b2426dba7e7&amp;width=550&amp;height=350&amp;lang=ru_RU&amp;scroll=true"></script>
+        </div>
+        <div th:insert="blocks/sidebar :: sidebar"></div>
+    </div>
+    <footer th:insert="blocks/footer :: footer "></footer>
+
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>
+
+

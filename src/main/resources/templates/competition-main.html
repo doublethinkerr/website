@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+
+<body>
+
+<div id="wrapper">
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <div id="main">
+        <div id="content">
+            <h2 class="text-center">Список соревнований</h2>
+
+            <div th:each="el : ${competitions.page}" class="post">
+                <span th:switch="${el.filename}">
+                    <p th:case="'null'"></p>
+                    <p th:case="*"><img th:src="@{/img/{filename}(filename = ${el.filename})}" class="image"></p>
+                </span>
+
+                <div class="post-info">
+                    <a th:href="'/competition/' + ${el.id}">
+                        <h3 class="post-title text-center" th:text="${el.title}"/>
+                    </a>
+                    <a th:href="'/competition/' + ${el.id}"><p class="anons" th:text="${el.anons}"/></a>
+                        <img th:src="@{../images/eye2.png}" class="imageEye"/>
+                        <div th:text="${el.views}" class="postViews"/>
+                        <div th:text="${el.date}" class="postDate"/>
+                </div>
+            </div>
+
+            <div class="pagable">
+                <nav aria-label="Page navigation" class="paging">
+                    <ul class="pagination " th:if="${competitions.page.totalPages > 1}">
+                        <li class="page-item" th:classappend="${!competitions.paging.isPrevEnabled()? 'disabled' : ''}">
+                            <a class="page-link" th:href="@{'/competition/?pageNumber=' + ${competitions.paging.pageNumber - 1}}"
+                               tabindex="-1">Предыдущая страница</a>
+                        </li>
+                        <th:block th:each="item : ${competitions.paging.getItems()}">
+                            <li class="page-item" th:classappend="${item.index == competitions.paging.pageNumber? 'active' : ''}"
+                                th:if="${item.pageItemType.name() == 'PAGE'}">
+                                <a class="page-link" th:href="@{'/competition/?pageNumber=' + ${item.index}}"
+                                   th:text="${item.index}"></a>
+                            </li>
+                            <li class="page-item disabled" th:if="${item.pageItemType.name() == 'DOTS'}">
+                                <a class="page-link" href="#">...</a>
+                            </li>
+                        </th:block>
+                        <li class="page-item" th:classappend="${!competitions.paging.isNextEnabled()? 'disabled' : ''}">
+                            <a class="page-link" th:href="@{'/competition/?pageNumber=' + ${competitions.paging.pageNumber + 1}}">Следующая страница</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+        </div>
+
+        <div th:insert="blocks/sidebar :: sidebar"></div>
+
+    </div>
+
+    <footer th:insert="blocks/footer :: footer "></footer>
+
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>

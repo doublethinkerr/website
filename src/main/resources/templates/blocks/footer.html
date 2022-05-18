@@ -1,0 +1,37 @@
+<div th:fragment="footer">
+    <div id="footer">
+        <footer class="myfooter container">
+            <div class="row">
+                <div class="col-6">
+                    <img th:src="@{../images/fssr.png}" class="myfooter-image">
+                    <small class="d-block text-center">© 2022</small>
+                </div>
+
+                <div class="col-md-auto myfooter-items">
+                    <ul class="list-unstyled">
+                        <li class="myfooter-item"><a href="/blog">Новости </a></li>
+                        <li class="myfooter-item"><a href="/document">Документы</a></li>
+                        <li class="myfooter-item"><a href="/about">О Федерации</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-auto myfooter-items footer-right-items">
+                    <ul class="list-unstyled">
+                        <li class="myfooter-item"><a href="/date">Расписание</a></li>
+                        <li class="myfooter-item"><a href="/photo">Фотографии</a></li>
+                        <li class="myfooter-item"><a href="/competition">Соревнования</a></li>
+                    </ul>
+                </div>
+                <div class="col myfooter-items myfooter-contacts">
+                    <ul class="list-unstyled">
+                        <li class="myfooter-item text-muted"><a href="#">Контакты: </a></li>
+                        <li class="myfooter-item text-muted"><a href="#">mail@gmail.ru </a></li>
+                        <li class="myfooter-item text-muted"><a href="#">89040324157</a></li>
+                        <a><img th:src="@{../images/vk.png}" class="footer-link-image"/></a>
+                        <a><img th:src="@{../images/instagram.png}" class="footer-link-image"/></a>
+                    </ul>
+
+                </div>
+            </div>
+        </footer>
+        </div>
+    </div>
