@@ -6,10 +6,14 @@ import com.ffssr.website.models.Post;
 import com.ffssr.website.models.repo.CompetitionRepository;
 import com.ffssr.website.models.repo.DocumentRepository;
 import com.ffssr.website.models.repo.PostRepository;
+import com.ffssr.website.services.Paged;
+import com.ffssr.website.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,12 +27,17 @@ import java.util.List;
 @Controller
 public class MainController {
 
+    static public List<Post> globalSerach = new ArrayList<>();
+    static public String searchString = "";
 
     @Autowired
     private DocumentRepository documentRepository;
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private PostService postService;
 
     @Autowired
     private CompetitionRepository competitionRepository;
@@ -91,6 +100,22 @@ public class MainController {
         return "live-stream";
     }
 
+    @PostMapping("/search")
+    public String newsMainSearch(@RequestParam String search, Model model){
+        searchString = search;
+        return "redirect:/search";
+    }
+
+    @GetMapping("/search")
+    public String search(@RequestParam(value = "pageNumber", required = false, defaultValue = "1") int pageNumber,
+                         @RequestParam(value = "size", required = false, defaultValue = "5") int size, Model model){
+        model.addAttribute("videoLink", NewsController.videoLink);
+        model.addAttribute("videoDescription", NewsController.videoDescription);
+        Paged posts = postService.getPageStringSearch(searchString, pageNumber, size);
+        model.addAttribute("posts", posts);
+        model.addAttribute("title", "Поиск");
+        return "search";
+    }
 
 
 }

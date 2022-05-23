@@ -1,6 +1,13 @@
 <div th:fragment="sidebar">
     <div id="sidebar">
-        <a href="/liveStream"><h4 class="mb-2 text-center">Прямые трансляции</h4></a>
+
+        <h4 class="text-center ">Поиск новостей</h4>
+        <form action="/search" method="post" class="square">
+            <input type="text" name="search">
+            <button type="submit" class="btn btn-info mt-1" id="but1">Найти</button>
+        </form>
+
+        <a href="/liveStream"><h4 class="mt-4 text-center">Прямые трансляции</h4></a>
         <div id="videoSpan" class="">
                 <span th:switch="${videoLink}" >
                     <p th:case="'null'" class="text-center">Прямых трансляций сейчас нет!</p>
