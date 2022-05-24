@@ -77,7 +77,7 @@ public class DocumentsController {
         return "blog-document";
     }
 
-    @GetMapping("/documentAdmin")
+    @GetMapping("/documents/admin")
     public String blogDocumentAdmin(Model model){
         List docs = getSidebarDocs();
         model.addAttribute("docs", docs);
@@ -88,7 +88,7 @@ public class DocumentsController {
     }
 
 
-    @PostMapping("/documentAdmin/{id}/remove")
+    @PostMapping("/documents/admin/{id}/remove")
     public String blogDocumentDelete(@PathVariable(value = "id") long id, Model model) {
         Document doc = documentRepository.findById(id).orElseThrow();
         documentRepository.delete(doc);

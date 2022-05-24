@@ -3,12 +3,9 @@
 <head>
     <header th:insert="blocks/headLink :: headLink"></header>
 </head>
-
 <body>
 <div id="wrapper">
-
-    <header th:insert="blocks/header :: header"></header>
-
+    <div th:insert="blocks/navigation :: navigation"></div>
     <div id="main">
         <div id="content">
                 <form name="f" th:action="@{/perform-login}" method="post">
@@ -30,23 +27,9 @@
                     </fieldset>
                 </form>
             </div>
-
-        </div>
-        <div id="sidebar">
-            <h3>Документы</h3>
-
-            <ul id="twitter_update_list">
-                <li><span> Документ 1<a style="font-size: 85%;" href="http://twitter.com/themelab/statuses/14229492866"></a></li><li></li>
-                <li><span> Документ 2<a style="font-size: 85%;" href="http://twitter.com/themelab/statuses/14229492866"></a></li><li></li>
-                <li><span> Документ 3<a style="font-size: 85%;" href="http://twitter.com/themelab/statuses/14229492866"></a></li><li></li>
-                <li><span> Документ 4<a style="font-size: 85%;" href="http://twitter.com/themelab/statuses/14229492866"></a></li><li></li>
-
-            </ul>
         </div>
     </div>
-
     <footer th:insert="blocks/footer :: footer "></footer>
-
 </div>
 <div th:insert="blocks/footerLink :: footerLink "></div>
 </body>

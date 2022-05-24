@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <header th:insert="blocks/headLink :: headLink"></header>
+</head>
+<body>
+<div id="wrapper">
+    <div th:insert="blocks/navigation :: navigation"></div>
+    <div id="main">
+        <div id="content">
+            <div th:value="${message}"></div>
+            <form action="" method="post">
+                <fieldset class="form-group">
+                    <label for="username">Имя</label>
+                    <input type="text" class="form-control" id="username" name="username"/>
+                    <label for="password">Пароль</label>
+                    <input type="password" class="form-control" id="password" name="password"/>
+                    <div class="form-actions mt-4">
+                        <button type="submit" class="btn btn-warning mt-3">Зарегистрироватся</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>
+<footer th:insert="blocks/footer :: footer "></footer>
+</div>
+<div th:insert="blocks/footerLink :: footerLink "></div>
+</body>
+</html>

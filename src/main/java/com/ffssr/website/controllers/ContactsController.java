@@ -64,7 +64,7 @@ public class ContactsController {
         return "contacts";
     }
 
-    @GetMapping("/contactsAdmin")
+    @GetMapping("/contacts/admin")
     public String blogContactsAdmin(Model model){
         List contactList = (List) contactRepository.findAll();
         model.addAttribute("contactList", contactList);
@@ -73,7 +73,7 @@ public class ContactsController {
         return "contacts-admin";
     }
 
-    @PostMapping("/contactsAdmin")
+    @PostMapping("/contacts/admin")
     public String blogContactsAdminPost(@RequestParam String number1, @RequestParam String number2, @RequestParam String number3,
                                         @RequestParam String email1, @RequestParam String email2,@RequestParam String email3,
                                         @RequestParam String social1, @RequestParam String social2, @RequestParam String social3,
@@ -91,6 +91,6 @@ public class ContactsController {
             i++;
         }
 
-        return "redirect:/contactsAdmin";
+        return "redirect:/contacts/admin";
     }
 }

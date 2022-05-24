@@ -5,16 +5,16 @@
 </head>
 <body>
 <div id="wrapper">
-    <header th:insert="blocks/header :: header"></header>
+    <div th:insert="blocks/navigation :: navigation"></div>
 
     <div id="main">
         <div id="content">
 
             <h2 class="">Контакты</h2>
             <a href="/blog/admin" class="btn btn-info">Назад</a>
-            <form method="post">
+            <form method="post" action="/contacts/admin">
 
-                <textarea name="textContacts" th:value="${contactList[10].name}" style="width: 599px; height: 300px;"></textarea><br>
+                <textarea name="textContacts" th:text="${contactList[10].name}" style="width: 599px; height: 300px;"></textarea><br>
 
                 <table class="table table-bordered table-hover">
                     <thead>

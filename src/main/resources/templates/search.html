@@ -8,17 +8,11 @@
 
 <div id="wrapper">
 
-    <header th:insert="blocks/header :: header"></header>
+    <div th:insert="blocks/navigation :: navigation"></div>
 
     <div id="main">
         <div id="content">
             <h2 class="text-center">список новостей</h2>
-
-           <!-- <form action="" method="post">
-                <input type="text" name="search">
-
-                <button type="submit" class="btn btn-info mt-1" id="but1">Найти</button>
-            </form> -->
 
             <div th:each="el : ${posts.page}" class="post">
                 <span th:switch="${el.filename}">
