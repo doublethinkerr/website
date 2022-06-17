@@ -37,7 +37,7 @@ public class ContactsController {
     @Autowired
     private DocumentRepository documentRepository;
 
-    String yandexMapsApi = "https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa76643c010b3d1f28d844a73e97dc392ea027786ef66844a181ffff5a99a3477&amp;width=599&amp;height=420&amp;lang=ru_RU&amp;scroll=true";
+    String yandexMapsApi = "https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Aa76643c010b3d1f28d844a73e97dc392ea027786ef66844a181ffff5a99a3477&amp;width=99%&amp;height=420&amp;lang=ru_RU&amp;scroll=true";
 
     public ArrayList<Document> getSidebarDocs(){
         int i = 0;

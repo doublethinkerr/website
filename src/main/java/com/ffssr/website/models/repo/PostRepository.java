@@ -14,7 +14,10 @@ import java.util.List;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
 
-    Page<Post> findAllByTitleContaining(String title, Pageable pageable);
+    Page <Post> findAllByAnonsContaining(String title, Pageable pageable);
+    List <Post> findAllByTitleContaining(String title, Pageable pageable);
+
+
 
     @Query(value = "SELECT * FROM Post ORDER BY id DESC LIMIT 1", nativeQuery = true)
     Post findLast();

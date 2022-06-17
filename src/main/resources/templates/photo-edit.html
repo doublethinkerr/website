@@ -8,22 +8,23 @@
 <body>
 
 <div id="wrapper">
-
     <div th:insert="blocks/navigation :: navigation"></div>
-
     <div id="main">
         <div id="content">
             <h2 th:text="${name}"></h2>
-            <a href="/photo" class="btn btn-info">Назад</a>
-
-            <form th:action="'/photo/' + ${id} + '/edit'" method="post" enctype="multipart/form-data">
-                <input type="text" name="name" th:value="${name}" class="form-control">
-                <p>Добавить изображения</p> <input type="file" name="files" multiple> <br>
-                <button class="btn btn-danger" type="submit"> Изменить</button>
-            </form>
-                <div th:each="el : ${photoAlbumMin}">
-                        <img th:src="@{/img/{filename}(filename = ${el})}" class="everyPhoto">
+            <a href="/photo/admin" class="btn btn-info">Назад</a>
+                <form th:action="'/photo/' + ${id} + '/edit'" method="post" enctype="multipart/form-data">
+                    <input type="text" name="name" th:value="${name}" class="form-control">
+                    <p>Добавить изображения</p> <input type="file" name="files" multiple> <br>
+                    <button class="btn btn-danger" type="submit"> Изменить</button>
+                </form>
+            <div th:each="el : ${album}">
+                <div th:each="list, iter : ${photoAlbum}">
+                    <a data-fancybox="gallery" th:href="@{/img/{filename}(filename = ${el.images[iter.index]})}">
+                        <img th:src="@{/img/{filename}(filename = ${el.imagesMin[iter.index]})}" class="photoEdit   everyPhoto rounded">
+                    </a>
                 </div>
+            </div>
 
         </div>
     </div>

@@ -3,12 +3,9 @@ package com.ffssr.website.controllers;
 import com.ffssr.website.config.Translit;
 import com.ffssr.website.models.Competition;
 import com.ffssr.website.models.Document;
-import com.ffssr.website.models.Post;
 import com.ffssr.website.models.repo.CompetitionRepository;
 import com.ffssr.website.models.repo.DocumentRepository;
 import com.ffssr.website.services.CompetitionService;
-import com.ffssr.website.services.PostService;
-import com.ibm.icu.text.Transliterator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -65,7 +62,7 @@ public class CompetitionsController {
                               @RequestParam(value = "size", required = false, defaultValue = "3") int size, Model model) {
 
         model.addAttribute("competitions", competitionService.getPage(pageNumber, NewsController.countOfPosts));
-        model.addAttribute("docs", MainController.docList);
+        model.addAttribute("docs", getSidebarDocs());
         model.addAttribute("videoLink", NewsController.videoLink);
         model.addAttribute("title", "Соревнования");
         return "competition-main";
@@ -137,7 +134,7 @@ public class CompetitionsController {
         competition.setDocumentArrayList(documents);
 
         competitionRepository.save(competition);
-        return "redirect:/competition/admin";
+        return "redirect:/competition/";
     }
 
     @GetMapping("/competition/{id}")
@@ -227,12 +224,13 @@ public class CompetitionsController {
     }
 
     @GetMapping("/competition/admin")
-    public String competitionMainAdmin(Model model){
-        Iterable<Competition> competitions = competitionRepository.findAll();
-        Collections.reverse((List<Competition>) competitions);
+    public String competitionMainAdmin(@RequestParam(value = "pageNumber", required = false, defaultValue = "1") int pageNumber,
+                                       @RequestParam(value = "size", required = false, defaultValue = "3") int size,Model model){
+/*        Iterable<Competition> competitions = competitionRepository.findAll();
+        Collections.reverse((List<Competition>) competitions);*/
+        model.addAttribute("competitions", competitionService.getPage(pageNumber, NewsController.countOfPosts));
         model.addAttribute("docs", MainController.docList);
-        model.addAttribute("posts", competitions);
-        model.addAttribute("title", "Авторизация");
+        model.addAttribute("title", "Администрирование соревнований");
         return "competition-main-admin";
     }
 

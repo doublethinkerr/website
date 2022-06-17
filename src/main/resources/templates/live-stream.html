@@ -14,12 +14,13 @@
         <div id="content">
             <h2>Прямая трансляция</h2>
 
-            <div class="container mh-100">
+            <div class="container mh-100 text-center">
                 <div id="videoSpan" class="">
                 <span th:switch="${videoLink}" >
                     <p th:case="'null'" class="text-center">Прямых трансляций сейчас нет!</p>
-                    <p th:case="*"><p th:text="${videoDescription}" class="videoDescription"></p>
-                        <iframe width="570" height="400" th:src="${videoLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p th:case="*">
+                    <iframe id="vid" width="570" height="400" th:src="${videoLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <p th:text="${videoDescription}" class="videoDescription"></p>
                     </p>
                 </span>
                 </div>

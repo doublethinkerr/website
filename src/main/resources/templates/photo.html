@@ -11,15 +11,17 @@
     <div th:insert="blocks/navigation :: navigation"></div>
     <div id="main">
         <div id="content">
-            <h2>фотоальбом</h2>
-            <div class="container">
-                <div th:each="el : ${photoAlbumList}" class="photoAlbum">
+            <h2 class="text-center">фотоальбом</h2>
+            <div class="container photoDirection">
+                <div class="row">
+                <div th:each="el : ${photoAlbumList}" class="photoAlbum col-sm-12 col-md-12 col-lg-6">
                     <div class="">
                         <a th:href="'/photo/' + ${el.id}">
                             <img th:src="@{/img/{filename}(filename = ${el.images[0]})}" class="mainPhoto">
                             <h3 class="photoTitle text-center" th:text="${el.name}"/>
                         </a>
                     </div>
+                </div>
                 </div>
             </div>
         </div>

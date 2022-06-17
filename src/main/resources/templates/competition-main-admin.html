@@ -13,13 +13,14 @@
     <div id="main">
         <div id="content">
             <a href="/competition/add" class="btn btn-primary my-3"> Добавить соревнование</a>
-            <a href="/contactsAdmin" class="btn btn-primary my-3"> Изменить контакты</a>
+            <a href="/contacts/admin" class="btn btn-primary my-3"> Изменить контакты</a>
             <a href="/login?logout" class="btn btn-primary my-3"> Выйти из аккаунта</a>
             <a href="/blog/admin" class="btn btn-primary my-3"> Администрирование новостей</a>
+            <a href="/photo/admin" class="btn btn-primary my-3"> Администрирование фотоальбомов</a>
 
             <h2>Список новостей</h2>
 
-            <div th:each="el : ${posts}" class="post">
+            <div th:each="el : ${competitions.page}" class="post">
                 <span th:switch="${el.filename}">
                     <p th:case="'null'"></p>
                     <p th:case="*"><img th:src="@{/img/{filename}(filename = ${el.filename})}" class="image"></p>
@@ -27,15 +28,40 @@
 
                 <div class="post-info">
                     <a th:href="'/competition/' + ${el.id}">
-                        <h4 class="post-title" th:text="${el.title}"/>
-                    </a><br>
-                    <p class="mx-2" th:text="${el.anons}"/>
+                        <h3 class="post-title text-center" th:text="${el.title}"/>
+                    </a>
+                    <p class="anons" th:text="${el.anons}"/>
                     <a th:href="'/competition/' + ${el.id} + '/edit'" class="btn btn-primary mt-2"> Редактировать</a>
                     <form th:action="'/competition/' + ${el.id} + '/remove'" method="post">
                         <button class="btn btn-danger" type="submit"> Удалить</button>
                     </form>
                 </div>
             </div>
+
+            <div class="pagable">
+                <nav aria-label="Page navigation" class="paging">
+                    <ul class="pagination " th:if="${competitions.page.totalPages > 1}">
+                        <li class="page-item" th:classappend="${!competitions.paging.isPrevEnabled()? 'disabled' : ''}">
+                            <a class="page-link" th:href="@{'/competition/?pageNumber=' + ${competitions.paging.pageNumber - 1}}"
+                               tabindex="-1">Предыдущая страница</a>
+                        </li>
+                        <th:block th:each="item : ${competitions.paging.getItems()}">
+                            <li class="page-item" th:classappend="${item.index == competitions.paging.pageNumber? 'active' : ''}"
+                                th:if="${item.pageItemType.name() == 'PAGE'}">
+                                <a class="page-link" th:href="@{'/competition/?pageNumber=' + ${item.index}}"
+                                   th:text="${item.index}"></a>
+                            </li>
+                            <li class="page-item disabled" th:if="${item.pageItemType.name() == 'DOTS'}">
+                                <a class="page-link" href="#">...</a>
+                            </li>
+                        </th:block>
+                        <li class="page-item" th:classappend="${!competitions.paging.isNextEnabled()? 'disabled' : ''}">
+                            <a class="page-link" th:href="@{'/competition/?pageNumber=' + ${competitions.paging.pageNumber + 1}}">Следующая страница</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
         </div>
 
         <div th:insert="blocks/sidebar-admin :: sidebar-admin"></div>

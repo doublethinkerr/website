@@ -1,35 +1,7 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <header th:insert="blocks/headLink :: headLink"></header>
-    <link href="../static/css/photo.css" th:href="@{/css/photo.css}" rel="stylesheet" type="text/css" />
-</head>
-
-<body>
-
-<div id="wrapper">
-    <div th:insert="blocks/navigation :: navigation"></header>
-    <div id="main">
-        <div id="content">
-            <h2>фотоальбом</h2>
-            <div class="container">
-                <div th:each="el : ${photoAlbumList}" class="photoAlbum">
-                    <div class="">
-                        <a th:href="'/photo/' + ${el.id}">
-                            <img th:src="@{/img/{filename}(filename = ${el.images[0]})}" class="mainPhoto">
-                            <h3 class="photoTitle text-center" th:text="${el.name}"/>
-                        </a>
-                    </div>
+            <div th:each="el : ${album}" class="row">
+                <div th:each="list, iter : ${photoAlbum}" class="col-lg-4 col-sm-6">
+                <a data-fancybox="gallery" th:href="@{/img/{filename}(filename = ${el.images[iter.index]})}">
+                    <img th:src="@{/img/{filename}(filename = ${el.imagesMin[iter.index]})}" class="everyPhoto rounded">
+                </a>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <footer th:insert="blocks/footer :: footer "></footer>
-
-</div>
-<div th:insert="blocks/footerLink :: footerLink "></div>
-</body>
-</html>
-
-

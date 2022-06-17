@@ -12,20 +12,22 @@
     <div id="main">
         <div id="content">
             <h2>фото</h2>
+            <a href="/blog/admin" class="btn btn-info">Назад</a>
             <a href="/photo/add" class="btn btn-primary my-3"> Создать фотоальбом</a>
             <div class="container">
 
-                <div th:each="el : ${photoAlbumList}" class="photoAlbum">
+                <div th:each="el : ${photoAlbumList}" class="photoAlbumAdmin">
                     <div class="">
                         <a th:href="'/photo/' + ${el.id}">
                             <img th:src="@{/img/{filename}(filename = ${el.images[0]})}" class="mainPhoto">
                             <h3 class="photoTitle text-center" th:text="${el.name}"/>
                         </a>
-                    </div>
+
                     <form th:action="'/photo/' + ${el.id} + '/remove'" method="post">
-                        <a th:href="'/photo/' + ${el.id} + '/edit'" class="btn btn-primary"> Редактировать</a>
-                        <button class="btn btn-danger" type="submit"> Удалить</button>
+                        <a th:href="'/photo/' + ${el.id} + '/edit'" class="btn btn-primary mb-3"> Редактировать</a>
+                        <button class="btn btn-danger mb-3" type="submit"> Удалить</button>
                     </form>
+                    </div>
                 </div>
             </div>
         </div>

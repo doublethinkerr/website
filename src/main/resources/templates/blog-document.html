@@ -9,13 +9,13 @@
     <div th:insert="blocks/navigation :: navigation"></div>
 
     <div id="main">
-        <div id="content">
+        <div id="content" class="col-sm-12 col-md-12 col-lg-8">
             <h2>Документы</h2>
             <div th:each="el : ${allDocs}" class="postDoc">
                 <div class="">
                     <p th:text="${el.description}" class="docOrigName"></p>
                     <img th:src="@{../images/word2.png}" class="imageDoc">
-                    <a th:href="@{/doc/{filename}(filename = ${el.name})}" target="_blank" th:download="${el.name}">
+                    <a th:href="@{/doc/{filename}(filename = ${el.name})}" target="_blank" >
                         <p th:text="${el.originalName}" class="docName"></p>
                     </a>
                 </div>

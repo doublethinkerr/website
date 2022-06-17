@@ -28,6 +28,4 @@ public class MvcConfig implements WebMvcConfigurer {
                 .addResourceLocations( "file:///" + uploadPathDOC + "/" );
     }
 
-
-
 }

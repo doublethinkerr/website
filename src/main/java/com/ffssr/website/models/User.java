@@ -1,5 +1,7 @@
 package com.ffssr.website.models;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -10,8 +12,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String username;
+    @NotNull
     private String password;
+    @NotNull
     private boolean active;
+
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
     public Long getId() {
         return id;
@@ -53,8 +62,5 @@ public class User {
         this.roles = roles;
     }
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles;
+
 }

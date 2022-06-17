@@ -11,7 +11,7 @@
     <div th:insert="blocks/navigation :: navigation"></div>
 
     <div id="main">
-        <div id="content">
+        <div id="content" class="col-sm-12 col-md-12 col-lg-8">
             <h2 class="text-center">Список соревнований</h2>
 
             <div th:each="el : ${competitions.page}" class="post">
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="pagable">
+            <div class="pagable container text-center">
                 <nav aria-label="Page navigation" class="paging">
                     <ul class="pagination " th:if="${competitions.page.totalPages > 1}">
                         <li class="page-item" th:classappend="${!competitions.paging.isPrevEnabled()? 'disabled' : ''}">

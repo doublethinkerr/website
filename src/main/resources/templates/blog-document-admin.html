@@ -19,7 +19,8 @@
                     <a th:href="@{/doc/{filename}(filename = ${el.name})}" target="_blank" th:download="${el.name}">
                         <p th:text="${el.originalName}" class="text-dark"></p>
                     </a>
-                    <form th:action="'/documentAdmin/' + ${el.id} + '/remove'" method="post">
+                    <a th:href="'/documents/admin/' + ${el.id} + '/upper'" class="btn btn-primary">Переместить наверх</a>
+                    <form th:action="'/documents/admin/' + ${el.id} + '/remove'" method="post">
                         <button class="btn btn-danger" type="submit"> Удалить</button>
                     </form>
             </div>

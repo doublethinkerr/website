@@ -30,6 +30,8 @@ public class MainController {
     static public List<Post> globalSerach = new ArrayList<>();
     static public String searchString = "";
 
+    static public Paged pagedNews;
+
     @Autowired
     private DocumentRepository documentRepository;
 
@@ -59,7 +61,7 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String home(Model model) {
+    public String home(@RequestParam(value = "pageNumber", required = false, defaultValue = "1") int pageNumber, Model model) {
         Post lastNews = postRepository.findLast();
         model.addAttribute("lastNews", lastNews);
         Competition lastCompetition = competitionRepository.findLast();
@@ -69,6 +71,8 @@ public class MainController {
         model.addAttribute("docs", docList);
         model.addAttribute("videoLink", NewsController.videoLink);
         model.addAttribute("title", "Федерация котания на коньках");
+        model.addAttribute("calendarDocs", DocumentsController.calendarDocs);
+        pagedNews = postService.getPage(pageNumber, NewsController.countOfPosts);
         return "home";
     }
 
@@ -89,6 +93,7 @@ public class MainController {
         model.addAttribute("docs", docList);
         model.addAttribute("mainDescription", mainDescription);
         model.addAttribute("title", "О нас");
+        model.addAttribute("calendarDocs", DocumentsController.calendarDocs);
         return "about";
     }
 
@@ -114,6 +119,9 @@ public class MainController {
         Paged posts = postService.getPageStringSearch(searchString, pageNumber, size);
         model.addAttribute("posts", posts);
         model.addAttribute("title", "Поиск");
+        model.addAttribute("calendarDocs", DocumentsController.calendarDocs);
+        model.addAttribute("docs", getSidebarDocs());
+        model.addAttribute("searchString", searchString);
         return "search";
     }
 

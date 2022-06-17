@@ -1,19 +1,12 @@
 package com.ffssr.website.controllers;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.*;
-
 import com.ffssr.website.config.Translit;
 import com.ffssr.website.models.PhotoAlbum;
-import com.ffssr.website.models.Post;
 import com.ffssr.website.models.repo.PhotoAlbumRepository;
-//import org.hibernate.mapping.List;
 import net.coobird.thumbnailator.Thumbnails;
-import net.coobird.thumbnailator.name.Rename;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.parameters.P;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class PhotoAlbumController {
@@ -33,7 +32,7 @@ public class PhotoAlbumController {
 
     @GetMapping("/photo")
     public String photo(Model model) {
-        List<PhotoAlbum> photoAlbumList = photoAlbumRepository.findAll();
+        List<PhotoAlbum> photoAlbumList = photoAlbumRepository.findAll(Sort.by(Sort.Direction.DESC, "id"));
         model.addAttribute("photoAlbumList", photoAlbumList);
         model.addAttribute("title", "Фотографии");
         return "photo";
@@ -101,6 +100,8 @@ public class PhotoAlbumController {
         model.addAttribute("title", "Редактирование фотоальбома");
         model.addAttribute("id", photoAlbum.getId());
         model.addAttribute("name", photoAlbum.getName());
+        model.addAttribute("album", photoAlbum);
+        model.addAttribute("photoAlbum", photoAlbum.getImages());
         model.addAttribute("photoAlbumMin", photoAlbum.getImagesMin());
         return "photo-edit";
     }

@@ -11,7 +11,7 @@
     <div th:insert="blocks/navigation :: navigation"></div>
 
     <div id="main">
-        <div id="content">
+        <div id="content" class="col-sm-12 col-md-12 col-lg-8">
 
             <div th:each="el : ${post}">
                 <span th:switch="${el.filename}">
@@ -22,7 +22,9 @@
                         </a>
                     </p>
                 </span>
-                <h2 th:text="${el.title}" class="postTitle"/>
+                <div class="postTitleDiv">
+                <h3 th:text="${el.title}" class="postTitleDetails"/>
+                </div>
                 <a href="/blog" class="btn btn-info">Назад</a>
                 <div id="fullText">
                     <textarea name="full_text" th:text="${el.full_text}" cols="50" style="width: 599px;">
@@ -45,6 +47,9 @@
 <style>
     .nicEdit-panelContain{
         display: none;
+    }
+    .nicEdit-main{
+    pointer-events: none;
     }
 </style>
 <div th:insert="blocks/footerLink :: footerLink "></div>

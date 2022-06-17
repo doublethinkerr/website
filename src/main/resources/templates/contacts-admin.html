@@ -15,34 +15,36 @@
             <form method="post" action="/contacts/admin">
 
                 <textarea name="textContacts" th:text="${contactList[10].name}" style="width: 599px; height: 300px;"></textarea><br>
-
-                <table class="table table-bordered table-hover">
-                    <thead>
-                    <tr>
-                        <th scope="col">Номера телефонов:</th>
-                        <th scope="col">Эл. почта:</th>
-                        <th scope="col">Соц. Сети:</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td><input type="text" name="number1" th:value="${contactList[0].name}"> </td>
-                        <td><input type="text" name="email1" th:value="${contactList[2].name}"> </td>
-                        <td><input type="text" name="social1" th:value="${contactList[4].name}"> </td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="number2" th:value="${contactList[1].name}"> </td>
-                        <td><input type="text" name="email2" th:value="${contactList[3].name}"> </td>
-                        <td><input type="text" name="social2" th:value="${contactList[5].name}"> </td>
-                    </tr>
-                    <tr>
-                        <td><input type="text" name="number3" th:value="${contactList[1].name}"> </td>
-                        <td><input type="text" name="email3" th:value="${contactList[3].name}"> </td>
-                        <td><input type="text" name="social3" th:value="${contactList[5].name}"> </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <input type="text" name="adress1" th:value="${contactList[9].name}"><br>
+                <div class="tableDiv table-responsive-sm">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th scope="col">Номера телефонов:</th>
+                            <th scope="col">Эл. почта:</th>
+                            <th scope="col">Соц. Сети:</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><input type="text" name="number1" th:value="${contactList[0].name}"> </td>
+                            <td><input type="text" name="email1" th:value="${contactList[3].name}"> </td>
+                            <td><input type="text" name="social1" th:value="${contactList[6].name}"> </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="number2" th:value="${contactList[1].name}"> </td>
+                            <td><input type="text" name="email2" th:value="${contactList[4].name}"> </td>
+                            <td><input type="text" name="social2" th:value="${contactList[7].name}"> </td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="number3" th:value="${contactList[2].name}"> </td>
+                            <td><input type="text" name="email3" th:value="${contactList[5].name}"> </td>
+                            <td><input type="text" name="social3" th:value="${contactList[8].name}"> </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <textarea name="adress1" th:text="${contactList[9].name}" placeholder="Введите полный текст статьи" id="editor" class="form-control" style="height: 100px; background: white;">
+                </textarea><br>
                 <input type="text" name="adressAPI" th:value="${yandexMapsApi}"><br>
                 <button type="submit" class="btn btn-primary mt-3">Изменить контакты</button>
             </form>

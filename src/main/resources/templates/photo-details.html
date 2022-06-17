@@ -2,29 +2,28 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <header th:insert="blocks/headLink :: headLink"></header>
+
     <link href="../static/css/photo.css" th:href="@{/css/photo.css}" rel="stylesheet" type="text/css" />
+
+
 </head>
 
 <body>
 
 <div id="wrapper">
-
     <div th:insert="blocks/navigation :: navigation"></div>
-
     <div id="main">
         <div id="content">
             <h2 th:text="${name}"></h2>
             <a href="/photo" class="btn btn-info">Назад</a>
 
-            <div th:each="el : ${album}">
-                <div th:each="list, iter : ${photoAlbum}">
+            <div th:each="el : ${album}" class="row">
+                <div th:each="list, iter : ${photoAlbum}" class="col-lg-4 col-sm-6">
                 <a data-fancybox="gallery" th:href="@{/img/{filename}(filename = ${el.images[iter.index]})}">
                     <img th:src="@{/img/{filename}(filename = ${el.imagesMin[iter.index]})}" class="everyPhoto rounded">
                 </a>
                 </div>
             </div>
-
-
 
         </div>
     </div>

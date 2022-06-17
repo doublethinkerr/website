@@ -1,9 +1,9 @@
 <div th:fragment="sidebar">
-    <div id="sidebar">
+    <div id="sidebar" class="col-sm-12 col-md-12 col-lg-4">
 
-        <h4 class="text-center ">Поиск новостей</h4>
-        <form action="/search" method="post" class="square">
-            <input type="text" name="search">
+        <h4 class="text-center">Поиск новостей</h4>
+        <form action="/search" method="post" class="square text-center">
+            <input type="text" name="search" id="searchField" placeholder="введите текст для поиска">
             <button type="submit" class="btn btn-info mt-1" id="but1">Найти</button>
         </form>
 
@@ -11,7 +11,7 @@
         <div id="videoSpan" class="">
                 <span th:switch="${videoLink}" >
                     <p th:case="'null'" class="text-center">Прямых трансляций сейчас нет!</p>
-                    <p th:case="*"><iframe width="250" height="200" th:src="${videoLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <p th:case="*"><iframe id="videoSidebar" th:src="${videoLink}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </p>
                 </span>
         </div>
@@ -49,7 +49,7 @@
         </div>
         </a>
         
-        <a href="#!" class="ripple">
+        <a href="#!" class="ripple text-center">
             <div  class="mt-4" >
                 <img th:src="@{../images/vladimir-gerb.png}" class="russ rounded-3">
             </div>

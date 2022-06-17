@@ -93,7 +93,16 @@ public class DocumentsController {
         Document doc = documentRepository.findById(id).orElseThrow();
         documentRepository.delete(doc);
         MainController.docList.remove(doc);
-        return "redirect:/documentAdmin";
+        return "redirect:/documents/admin";
+    }
+
+    @GetMapping("/documents/admin/{id}/upper")
+    public String blogDocumentUpper(@PathVariable(value = "id") long id, Model model) {
+        Document doc = documentRepository.findById(id).orElseThrow();
+        documentRepository.delete(doc);
+        documentRepository.save(doc);
+        MainController.docList.remove(doc);
+        return "redirect:/documents/admin";
     }
 
     @GetMapping("/blog/addDocumentCalendar")
@@ -142,13 +151,13 @@ public class DocumentsController {
 
                 calendarDocs.add(doc);
 
-                return "redirect:/documentAdmin";
+                return "redirect:/documents/admin";
 
             } catch (Exception e) {
-                return "redirect:/documentAdmin";
+                return "redirect:/documents/admin";
             }
         } else {
-            return "redirect:/documentAdmin";
+            return "redirect:/documents/admin";
         }
     }
 
@@ -159,7 +168,7 @@ public class DocumentsController {
     }
     @PostMapping("/blog/addDocument")
     public String uploadFile(@RequestParam("file") MultipartFile file,
-                             @RequestParam String description
+                             @RequestParam String description, Model model
                              ) {
 
         String origName = null;
@@ -190,13 +199,16 @@ public class DocumentsController {
 
                 documentRepository.save(doc);
                 MainController.docList.add(doc);
-                return "redirect:/documentAdmin";
+                return "redirect:/documents/admin";
 
             } catch (Exception e) {
-                return "You failed to upload " + origName + " =&gt; " + e.getMessage();
+                model.addAttribute("statusMessage","You failed to upload " + origName + " =&gt; " + e.getMessage());
+                return "errorPage";
             }
         } else {
-            return "You failed to upload " + origName+ " because the file was empty.";
+
+            model.addAttribute("statusMessage","You failed to upload " + origName + " because the file was empty.");
+            return "errorPage";
         }
     }
 }

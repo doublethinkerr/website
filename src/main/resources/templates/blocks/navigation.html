@@ -7,17 +7,24 @@
 
 
     </div>
-
-        <div id="blue-bar">
-            <img th:src="@{../images/home.png}" class="homeLogo">
-            <a href="/" class="expand">Главная</a>
-            <ul>
-                <li><a href="/blog">Новости</a></li>
-                <li><a href="/competition">Соревнования</a></li>
-                <li><a href="/documents">Документы</a></li>
-                <li><a href="/about">О Фередации</a></li>
-                <li><a href="/contacts">Контакты</a></li>
-                <li><a href="/photo">Фотографии</a></li>
-            </ul>
+    <div class="navigat">
+        <div class="container blue-bar1 breakpoints">
+            <header class="header row">
+                <div class="col-lg-2 text-center">
+                    <img th:src="@{../images/home.png}" class="homeLogo">
+                    <a href="/" class="expand"> Главная</a>
+                </div>
+                <div class="col-lg-10 text-center">
+                    <ul class="row gy-3">
+                        <li class="col-sm-6 col-md-4 col-lg-auto"><a href="/blog">Новости</a></li>
+                        <li class="col-sm-6 col-md-4 col-lg-auto"><a href="/competition">Соревнования</a></li>
+                        <li class="col-sm-6 col-md-4 col-lg-auto"><a href="/documents">Документы</a></li>
+                        <li class="col-sm-6 col-md-4 col-lg-auto"><a href="/about">О Фередации</a></li>
+                        <li class="col-sm-6 col-md-4 col-lg-auto"><a href="/contacts">Контакты</a></li>
+                        <li class="col-sm-6 col-md-4 col-lg-auto"><a href="/photo">Фотографии</a></li>
+                    </ul>
+                </div>
+            </header>
         </div>
+    </div>
 </div>

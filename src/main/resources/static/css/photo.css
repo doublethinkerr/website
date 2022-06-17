@@ -1,40 +1,35 @@
-#content {
-    border: 1px solid black;
-	width:960px;
-    min-height: 800px;
-	}
-.photoAlbum{
+.photoAlbum {
+    margin: 35px 0 40px;
+}
+
+.photoAlbumAdmin {
     float: left;
     width: 390px;
-    height: 300px;
-    margin: 15px 35px 20px 20px;
+    height: 350px;
+    margin: 15px 45px 40px 20px;
 }
 
 .photoAlbum a:hover{
     text-decoration: underline;
     font-weight: bold;
-    font-size: 22px;
 }
 
 .mainPhoto{
-    width: 389px;
-    height: 270px;
+    width: 100%;
     border-radius: 4%;
     box-shadow: 2px 2px 18px 5px #626262;
 }
 
-.photoTitle{
+.photoTitle {
     text-align: center;
-    font-size: 20px;
+    font-size: 110%;
     color: DarkBlue;
-    padding-top: 3px;
+    padding-top: 10px;
     font-weight: normal;
 }
 
 .everyPhoto{
-    float: left;
-    height: 210px;
-    width: 285px;
+    width: 95%;
     border: 1px solid black;
     margin: 35px 15px 5px 5px;
     box-shadow: 2px 2px 5px #888;

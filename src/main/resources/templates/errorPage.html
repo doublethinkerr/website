@@ -7,20 +7,23 @@
 <body>
 
 <div id="wrapper">
+
     <div th:insert="blocks/navigation :: navigation"></div>
+
     <div id="main">
         <div id="content" class="col-sm-12 col-md-12 col-lg-8">
-            <h2>Инфа про нас</h2>
-            <div class="container aboutUs" id="fullText">
-                <p th:text="${mainDescription}" class="fullText2"></p>
-            </div>
+            <h2 class="text-center">Ошибка загрузки</h2>
+            <h2 th:text="${statusMessage}" id="text2"></h2>
         </div>
         <div th:insert="blocks/sidebar :: sidebar"></div>
+
     </div>
 
     <footer th:insert="blocks/footer :: footer "></footer>
 
 </div>
+
 <div th:insert="blocks/footerLink :: footerLink "></div>
 </body>
+
 </html>

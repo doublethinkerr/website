@@ -11,9 +11,10 @@
     <div th:insert="blocks/navigation :: navigation"></div>
 
     <div id="main">
-        <div id="content">
+        <div id="content" class="col-sm-12 col-md-12 col-lg-8">
             <h2 class="text-center">список новостей</h2>
-
+            <h2 th:text="${searchString}" id="text"></h2>
+            <h2 th:text="${statusMessage}" id="text2"></h2>
             <div th:each="el : ${posts.page}" class="post">
                 <span th:switch="${el.filename}">
                     <p th:case="'null'"></p>
@@ -67,6 +68,22 @@
     <footer th:insert="blocks/footer :: footer "></footer>
 
 </div>
+<script>
+(function() {
+  var text = document.getElementById('text').innerHTML;
+
+  var elements = document.getElementsByClassName("anons")
+  for ( key in elements ){
+        if (key.innerHTML === text) {
+        key.innerHTML = key.innerHTML.replace(reg, '<span style="color: red">' + text + '</span>');
+        console.log('Текст asdasds');
+      } else {
+        console.log('Текст не найдет');
+        };
+  }
+}());
+
+</script>
 <div th:insert="blocks/footerLink :: footerLink "></div>
 </body>
 

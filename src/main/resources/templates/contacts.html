@@ -10,12 +10,10 @@
     <div th:insert="blocks/navigation :: navigation"></div>
 
     <div id="main">
-        <div id="content">
+        <div id="content" class="col-sm-12 col-md-12 col-lg-8">
 
 
             <h2 class="">Контакты</h2>
-
-            <textarea class="adress" th:text="${contactList[10].name}" style="width: 599px;"></textarea>
 
             <table class="table table-bordered table-hover">
                 <thead>
@@ -29,24 +27,31 @@
                 <tr>
                     <td th:text="${contactList[0].name}"></td>
                     <td th:text="${contactList[3].name}"></td>
-                    <td th:text="${contactList[6].name}"></td>
+                    <a th:href="${contactList[6].name}"><td th:text="${contactList[6].name}"></td></a>
                 </tr>
                 <tr>
                     <td th:text="${contactList[1].name}"></td>
                     <td th:text="${contactList[4].name}"></td>
-                    <td th:text="${contactList[7].name}"></td>
+                    <a th:href="${contactList[7].name}"><td th:text="${contactList[7].name}"></td></a>
                 </tr>
                 <tr>
                     <td th:text="${contactList[2].name}"></td>
                     <td th:text="${contactList[5].name}"></td>
-                    <td th:text="${contactList[8].name}"></td>
+                    <a th:href="${contactList[8].name}"><td th:text="${contactList[8].name}"></td></a>
                 </tr>
                 </tbody>
             </table>
-
+            <div class="nicEditDiv">
+            <textarea class="adress" id="editor1" th:text="${contactList[10].name}" style="width: 99%;"></textarea>
+            </div>
 
             <h2 class="mt-4 mb-2">Наш адресс:</h2>
-            <p class="adress" th:text="${contactList[9].name}"></p>
+
+            <div class="nicEditDiv">
+            <textarea name="adress1" th:text="${contactList[9].name}" id="editor2" class="form-control" style="width: 99%;">
+            </textarea>
+            </div>
+
             <script type="text/javascript" charset="utf-8" async th:src="${yandexMapsApi}"></script>
         </div>
             <div th:insert="blocks/sidebar :: sidebar"></div>
@@ -58,8 +63,8 @@
     .nicEdit-panelContain{
         display: none;
     }
-    .nicEdit-main{
-        padding-bottom: 20px;
+        .nicEdit-main{
+    pointer-events: none;
     }
 </style>
 <div th:insert="blocks/footerLink :: footerLink "></div>

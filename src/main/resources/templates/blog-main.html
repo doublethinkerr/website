@@ -11,9 +11,8 @@
     <div th:insert="blocks/navigation :: navigation"></div>
 
     <div id="main">
-        <div id="content">
+        <div id="content" class="col-sm-12 col-md-12 col-lg-8">
             <h2 class="text-center">список новостей</h2>
-
             <div th:each="el : ${posts.page}" class="post">
                 <span th:switch="${el.filename}">
                     <p th:case="'null'"></p>
@@ -31,7 +30,7 @@
                 </div>
             </div>
 
-            <div class="pagable">
+            <div class="pagable container text-center">
                 <nav aria-label="Page navigation" class="paging">
                     <ul class="pagination" th:if="${posts.page.totalPages > 1}">
                         <li class="page-item" th:classappend="${!posts.paging.isPrevEnabled()? 'disabled' : ''}">
@@ -56,9 +55,7 @@
             </div>
 
         </div>
-
-        <div th:insert="blocks/sidebar :: sidebar"></div>
-
+            <div th:insert="blocks/sidebar :: sidebar"></div>
     </div>
 
     <footer th:insert="blocks/footer :: footer "></footer>
