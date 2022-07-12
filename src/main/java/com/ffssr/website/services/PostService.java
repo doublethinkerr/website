@@ -30,11 +30,7 @@ public class PostService {
 
     public Paged<Post> getPageStringSearch(String title, int pageNumber, int size) {
         PageRequest request = PageRequest.of(pageNumber - 1, size, Sort.by("id"));
-/*        List <Post> myList1 = postRepository.findAllByAnonsContaining(title, request);
-        List <Post> myList2 = postRepository.findAllByTitleContaining(title,request);
-        List <Post> myListFull = new ArrayList<>();
-        myListFull.addAll(myList1); myListFull.addAll(myList2);
-        Page <Post> postPage = new PageImpl<>(myListFull);*/
+
         Page<Post> postPage = (Page<Post>) postRepository.findAllByAnonsContaining(title, request);
 
         return new Paged<>(postPage, Paging.of(postPage.getTotalPages(), pageNumber, size));
