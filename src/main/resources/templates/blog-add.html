@@ -13,6 +13,7 @@
     <div id="main">
         <div id="content" class="mb-5">
             <h2>Добавление статьи</h2>
+            <div class="statusMsg" th:text="${statusMessage}"></div>
             <form action="" method="post" enctype="multipart/form-data">
                 <input type="text" name="title" placeholder="Введите название статьи" class="form-control"><br>
                 <input type="text" name="anons" placeholder="Введите анонс статьи" class="form-control"><br>
